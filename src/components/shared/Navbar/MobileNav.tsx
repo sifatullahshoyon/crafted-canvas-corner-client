@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import NavItem from "./Navitem";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -29,8 +30,8 @@ const MobileNav = () => {
       </SheetTrigger>
 
       <SheetContent side="left">
-        <div className="flex flex-col items-start">
-          {mobileItems.map((item, index) => (
+        <div className="flex flex-col items-start ">
+          {/* {navItems.map((item, index) => (
             <Button
               key={index}
               variant="link"
@@ -38,15 +39,25 @@ const MobileNav = () => {
                 setOpen(false);
               }}
             >
-              {item}
+              <div className="text-red-500">logo</div>
+              <div>{item.element}</div>
+
+              <div>
+                <p>search</p>
+              </div>
             </Button>
-          ))}
+          ))} */}
+          <div
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            <NavItem></NavItem>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
   );
 };
-
-const mobileItems = ["A", "B", "C"];
 
 export default MobileNav;
