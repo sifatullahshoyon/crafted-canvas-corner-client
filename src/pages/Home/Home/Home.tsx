@@ -1,5 +1,13 @@
+import Hero from "../Hero/Hero";
+import WelcomeToStore from "../WelcomeToStore/WelcomeToStore";
+
 const Home = () => {
-  return <div>{/* <Topbar /> */}</div>;
+  return (
+    <div>
+      <Hero />
+      <WelcomeToStore />
+    </div>
+  );
 };
 
 export default Home;

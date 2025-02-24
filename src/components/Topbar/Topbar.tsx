@@ -53,7 +53,9 @@ const Topbar = () => {
                 <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
                 <circle cx="12" cy="10" r="3" />
               </svg>
-              <p className="text-white font-roboto text-xs">Bangladesh</p>
+              <p className="text-white font-roboto text-xs">
+                Dhaka, Bangladesh
+              </p>
             </div>
           </div>
           {/* social icons */}
