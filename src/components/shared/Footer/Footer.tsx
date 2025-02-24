@@ -21,13 +21,13 @@ const Footer = () => {
               <hr className="w-12" />
               {/* social icons */}
               <div className="flex justify-start items-center flex-wrap gap-4 mt-6">
-                <div className="w-6 h-6 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                <div className="w-8 h-8 bg-white rounded-full flex justify-center items-center cursor-pointer">
                   <Facebook />
                 </div>
-                <div className="w-6 h-6 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                <div className="w-8 h-8 bg-white rounded-full flex justify-center items-center cursor-pointer">
                   <LinkedIn />
                 </div>
-                <div className="w-6 h-6 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                <div className="w-8 h-8 bg-white rounded-full flex justify-center items-center cursor-pointer">
                   <YouTube />
                 </div>
               </div>
