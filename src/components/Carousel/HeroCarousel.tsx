@@ -15,26 +15,24 @@ const HeroCarousel = () => {
     cssEase: "linear",
   };
   return (
-    <Slider {...settings}>
-      <div>
-        <img src={banner1} alt="banner 1" />
-      </div>
-      <div>
-        <img src={banner2} alt="banner 2" />
-      </div>
-      <div>
-        <img src={banner3} alt="banner 3" />
-      </div>
-      <div>
-        <img src={banner1} alt="banner 1" />
-      </div>
-      <div>
-        <img src={banner2} alt="banner 2" />
-      </div>
-      <div>
-        <img src={banner3} alt="banner 3" />
-      </div>
-    </Slider>
+    <div className="border-2 border-red-500 ">
+      <Slider {...settings}>
+        <div style={{ width: "500px", display: "block" }}>
+          <img
+            src={banner1}
+            alt="banner 1"
+            className="w-full"
+            style={{ width: "100%" }}
+          />
+        </div>
+        <div style={{ width: "100%", display: "block" }}>
+          <img src={banner2} alt="banner 1" className="w-full" />
+        </div>
+        <div style={{ width: "100%", display: "block" }}>
+          <img src={banner3} alt="banner 1" className="w-full" />
+        </div>
+      </Slider>
+    </div>
   );
 };
 

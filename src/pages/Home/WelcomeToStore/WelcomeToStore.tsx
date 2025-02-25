@@ -1,5 +1,8 @@
 import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
+import img1 from "../../../assets/images/store/aboutcms1.jpg";
+import img2 from "../../../assets/images/store/aboutcms2.jpg";
+import img3 from "../../../assets/images/store/aboutcms3.jpg";
 
 const WelcomeToStore = () => {
   return (
@@ -22,10 +25,36 @@ const WelcomeToStore = () => {
               survived not only five centuries, but also the leap into
               electronic typesetting.
             </p>
-            <Button>Read More</Button>
+            <Button
+              variant="destructive"
+              className="bg-[#EF6291] text-white font-medium font-roboto tracking-wide hover:bg-[#EF6291] px-6 text-base"
+            >
+              Read More
+            </Button>
           </div>
           {/* img part */}
-          <div></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+            <div className="md:col-span-2">
+              <img
+                src={img1}
+                alt="product img 1"
+                className="w-full h-full opacity-0 animate-fade-in"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 gap-4">
+              <img
+                src={img2}
+                alt="product img 2"
+                className="w-full h-full opacity-0 animate-fade-in"
+              />
+              <img
+                src={img3}
+                alt="product img 3"
+                className="w-full h-full opacity-0 animate-fade-in"
+              />
+            </div>
+          </div>
         </div>
       </Container>
     </section>
