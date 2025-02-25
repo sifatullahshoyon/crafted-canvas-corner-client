@@ -1,3 +1,4 @@
+import ErrorElement from "@/components/ErrorElement";
 import MainLayout from "@/layouts/MainLayout";
 import About from "@/pages/Home/About/About";
 import Home from "@/pages/Home/Home/Home";
@@ -8,7 +9,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <p>Error Page</p>,
+    errorElement: <ErrorElement />,
     children: [
       {
         path: "/",
