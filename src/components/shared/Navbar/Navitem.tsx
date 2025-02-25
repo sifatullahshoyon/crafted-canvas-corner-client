@@ -39,10 +39,10 @@ const navItems = [
   },
   {
     path: "/all-products",
-    element: "Product",
+    element: "All Product",
   },
   {
     path: "/about-us",
-    element: "About",
+    element: "About US",
   },
 ];
