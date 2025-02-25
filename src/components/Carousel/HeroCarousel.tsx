@@ -15,7 +15,7 @@ const HeroCarousel = () => {
     cssEase: "linear",
   };
   return (
-    <div className="border-2 border-red-500 ">
+    <>
       <Slider {...settings}>
         <div style={{ width: "500px", display: "block" }}>
           <img
@@ -32,7 +32,7 @@ const HeroCarousel = () => {
           <img src={banner3} alt="banner 1" className="w-full" />
         </div>
       </Slider>
-    </div>
+    </>
   );
 };
 

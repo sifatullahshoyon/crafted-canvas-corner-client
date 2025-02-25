@@ -1,21 +1,27 @@
 import ProductCard from "@/components/shared/Card/ProductCard";
 import Container from "@/components/shared/Container";
+import { Button } from "@/components/ui/button";
 
 const FeaturedProducts = () => {
   return (
     <div className="mt-24">
       <Container>
-        <div>
+        <>
           <h1 className="font-roboto font-bold text-[#1A1A1A] text-[40px] tracking-[.2px] leading-[30px] pb-6 ">
             Featured Products
           </h1>
           <hr className="w-24 h-[3px] bg-[#EF6291]" />
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-6">
-            {products?.map((product) => (
+            {products?.slice(0, 8).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </div>
+          <div className="text-center">
+            <Button className="bg-[#EF6291] font-roboto hover:bg-[#EF6291] text-white">
+              View All Product
+            </Button>
+          </div>
+        </>
       </Container>
     </div>
   );

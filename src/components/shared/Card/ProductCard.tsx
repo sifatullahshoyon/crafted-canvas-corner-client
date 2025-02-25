@@ -4,10 +4,10 @@ import RatingStart from "../Rating/RatingStart";
 import { Button } from "@/components/ui/button";
 
 const ProductCard = ({ product }) => {
-  const { id, name, price, image } = product;
+  const { name, price, image } = product;
 
   return (
-    <div>
+    <>
       <Card className="relative group max-w-[305px] border-none  p-4">
         {/* Product Image */}
         <div className="relative w-full h-56 flex justify-center items-center bg-gray-100">
@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
           </Button>
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 };
 
