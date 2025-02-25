@@ -1,3 +1,4 @@
+import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import Hero from "../Hero/Hero";
 import WelcomeToStore from "../WelcomeToStore/WelcomeToStore";
 
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       <Hero />
       <WelcomeToStore />
+      <FeaturedProducts />
     </div>
   );
 };
