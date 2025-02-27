@@ -29,7 +29,7 @@ const FeaturedProducts = () => {
 
 export default FeaturedProducts;
 
-const products = [
+export const products = [
   {
     id: 1,
     name: "Premium Notebook",

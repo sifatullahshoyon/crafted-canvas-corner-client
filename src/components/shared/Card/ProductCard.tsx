@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
         {/* Product Image */}
         <div className="relative w-full h-56 flex justify-center items-center bg-gray-100">
           <img
-            src={image}
+            src={image ? image : "not found"}
             alt="Product"
             className="w-full h-full object-contain"
           />
@@ -37,10 +37,10 @@ const ProductCard = ({ product }) => {
         {/* Product Info */}
         <CardContent className="text-center mt-4">
           <h3 className="font-roboto text-sm font-normal text-[#888888] group-hover:text-[#EF6291] tracking-wide">
-            {name}
+            {name ? name : "not found"}
           </h3>
           <p className="text-lg font-bold text-[#1A1A1A] font-roboto my-2">
-            ${price}
+            ${price ? price : "not found"}
           </p>
           <RatingStart />
           <Button

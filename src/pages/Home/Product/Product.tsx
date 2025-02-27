@@ -6,7 +6,9 @@ const Product = () => {
     <>
       <SectionCover pageName="All Product" />
       <Container>
-        <div></div>
+        <div>
+          <h1>All Product</h1>
+        </div>
       </Container>
     </>
   );

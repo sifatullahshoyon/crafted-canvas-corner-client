@@ -17,6 +17,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "react-router-dom";
 
 const UserInfoDropdown = () => {
   return (
@@ -34,11 +35,12 @@ const UserInfoDropdown = () => {
             <User className="group-hover:text-[#EF6291]" />
             <span className="group-hover:text-[#EF6291]">Profile</span>
           </DropdownMenuItem>
-
-          <DropdownMenuItem className="group cursor-pointer">
-            <LogIn className="group-hover:text-[#EF6291]" />
-            <span className="group-hover:text-[#EF6291]">Login</span>
-          </DropdownMenuItem>
+          <Link to="/login">
+            <DropdownMenuItem className="group cursor-pointer">
+              <LogIn className="group-hover:text-[#EF6291]" />
+              <span className="group-hover:text-[#EF6291]">Login</span>
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         {/* my profile end */}
         <DropdownMenuSeparator />
