@@ -21,6 +21,9 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginCheckbox from "@/components/checkbox/LoginCheckbox";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUser } from "@/redux/features/auth/authSlice";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -36,8 +39,23 @@ const LoginCard = () => {
     },
   });
 
-  const onSubmit = (values) => {
-    console.log(values);
+  const [login, { error }] = useLoginMutation();
+
+  console.error(error);
+
+  const dispatch = useAppDispatch();
+
+  const onSubmit = async (data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
+    const res = await login(userInfo).unwrap();
+
+    // const user = verifyToken(res.token);
+
+    dispatch(setUser({ user: res.data, token: res.token }));
   };
 
   return (
@@ -91,7 +109,7 @@ const LoginCard = () => {
                     <FormControl>
                       <Input
                         id="password"
-                        type="password"
+                        type="text"
                         placeholder="Enter Your Password"
                         {...field}
                         className="font-roboto"
