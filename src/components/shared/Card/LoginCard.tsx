@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Divider from "../Divider";
 import {
   Form,
@@ -17,13 +18,15 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginCheckbox from "@/components/checkbox/LoginCheckbox";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/auth/authSlice";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -34,28 +37,37 @@ const LoginCard = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: "user@gmail.com",
+      password: "123456",
     },
   });
 
-  const [login, { error }] = useLoginMutation();
-
-  console.error(error);
+  const Navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
 
   const dispatch = useAppDispatch();
 
-  const onSubmit = async (data) => {
-    const userInfo = {
-      email: data.email,
-      password: data.password,
-    };
+  const onSubmit = async (data: FieldValues) => {
+    // const toastId = toast.loading("logging in...");
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
 
-    const res = await login(userInfo).unwrap();
+      const res = await login(userInfo).unwrap();
 
-    // const user = verifyToken(res.token);
+      // const user = verifyToken(res.token);
 
-    dispatch(setUser({ user: res.data, token: res.token }));
+      dispatch(setUser({ user: res.data, token: res.token }));
+      // toast.success("Login successfully", { id: toastId, duration: 2000 });
+      toast.success("Login Successfully.");
+
+      Navigate("/");
+    } catch (error: any) {
+      console.error(error);
+      toast.error("something went wrong");
+    }
   };
 
   return (
@@ -132,7 +144,7 @@ const LoginCard = () => {
                 type="submit"
                 className="w-full font-roboto bg-[#EF6291] hover:bg-[#EF6291] hover:text-[#1A1A1A]"
               >
-                Sign In
+                {isLoading ? <Loader2 className="animate-spin" /> : "Sign In"}
               </Button>
             </form>
           </Form>

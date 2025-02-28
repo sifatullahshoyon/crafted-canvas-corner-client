@@ -11,12 +11,14 @@ import "slick-carousel/slick/slick-theme.css";
 import "swiper/css";
 import "swiper/css/pagination";
 import { PersistGate } from "redux-persist/integration/react";
+import { Toaster } from "sonner";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <RouterProvider router={router} />
+        <Toaster />
       </PersistGate>
     </Provider>
   </StrictMode>

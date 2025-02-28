@@ -18,8 +18,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, useCurrentUser } from "@/redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 const UserInfoDropdown = () => {
+  const user = useAppSelector(useCurrentUser);
+
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toast.success("Login Successfully.");
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,12 +46,14 @@ const UserInfoDropdown = () => {
             <User className="group-hover:text-[#EF6291]" />
             <span className="group-hover:text-[#EF6291]">Profile</span>
           </DropdownMenuItem>
-          <Link to="/login">
-            <DropdownMenuItem className="group cursor-pointer">
-              <LogIn className="group-hover:text-[#EF6291]" />
-              <span className="group-hover:text-[#EF6291]">Login</span>
-            </DropdownMenuItem>
-          </Link>
+          {!user && (
+            <Link to="/login">
+              <DropdownMenuItem className="group cursor-pointer">
+                <LogIn className="group-hover:text-[#EF6291]" />
+                <span className="group-hover:text-[#EF6291]">Login</span>
+              </DropdownMenuItem>
+            </Link>
+          )}
         </DropdownMenuGroup>
         {/* my profile end */}
         <DropdownMenuSeparator />
@@ -64,12 +77,17 @@ const UserInfoDropdown = () => {
         {/* End cart  */}
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="group bg-[#EF6291] hover:bg-[#EF6291] focus:bg-[#EF6291] cursor-pointer">
-            <LogOut className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white" />
-            <span className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white">
-              Log out
-            </span>
-          </DropdownMenuItem>
+          {user && (
+            <DropdownMenuItem
+              onClick={handleLogout}
+              className="group bg-[#EF6291] hover:bg-[#EF6291] focus:bg-[#EF6291] cursor-pointer"
+            >
+              <LogOut className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white" />
+              <span className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white">
+                Log out
+              </span>
+            </DropdownMenuItem>
+          )}
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
