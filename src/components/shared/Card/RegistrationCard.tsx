@@ -3,16 +3,73 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import Divider from "../Divider";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { FieldValues, useForm } from "react-hook-form";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import { toast } from "sonner";
+
+const formSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email"),
+  photo: z.string().optional(),
+  password: z.string(),
+});
 
 const RegistrationCard = () => {
+  const form = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "user1",
+      email: "user1@example.com",
+      photo:
+        "https://res.cloudinary.com/dowpaz8fo/image/upload/v1740032294/hello.png",
+      password: "123456",
+    },
+  });
+
+  const [register] = useRegisterMutation();
+  const Navigate = useNavigate();
+
+  const onSubmit = async (data: FieldValues) => {
+    const toastId = toast.loading("logging in...");
+    try {
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        photo: data.photo,
+        password: data.password,
+      };
+
+      register(userInfo);
+      toast.success("Successfully registered in Crafted Canvas Corner.", {
+        id: toastId,
+      });
+      Navigate("/login");
+    } catch (error) {
+      console.error(error);
+      toast.error(
+        "This Email Address is already registered. Please try to another account",
+        { id: toastId }
+      );
+    }
+  };
+
   return (
     <div className="w-full h-full flex flex-col justify-center shadow-none overflow-hidden rounded">
       <Card className="md:w-4/5 h-full mx-auto flex flex-col justify-center shadow-none overflow-hidden rounded border-none">
@@ -28,75 +85,93 @@ const RegistrationCard = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
-            <div className="grid w-full items-center gap-4">
-              {/* start name field */}
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="name" className="font-roboto">
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  placeholder="Enter Your Name"
-                  className="font-roboto"
-                  required
-                />
-              </div>
-              {/* End name field */}
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="grid w-full items-center gap-4"
+            >
+              <FormField
+                name="name"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-roboto">Name</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Enter Your Name"
+                        className="font-roboto"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-              {/* start email field */}
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email" className="font-roboto">
-                  Email
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  placeholder="Enter Your Email"
-                  className="font-roboto"
-                  required
-                />
-              </div>
-              {/* End email field */}
+              <FormField
+                name="email"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-roboto">Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Enter Your Email"
+                        className="font-roboto"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-              {/* start email field */}
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="email" className="font-roboto">
-                  Photo Url
-                </Label>
-                <Input
-                  id="photo"
-                  name="photo"
-                  placeholder="Enter Your Photo Url"
-                  className="font-roboto"
-                />
-              </div>
-              {/* End email field */}
+              <FormField
+                name="photo"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-roboto">Photo URL</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Enter Your Photo URL"
+                        className="font-roboto"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-              {/* start password field */}
+              <FormField
+                name="password"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-roboto">Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="password"
+                        placeholder="Enter Your Password"
+                        className="font-roboto"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password" className="font-roboto">
-                  Password
-                </Label>
-                <Input
-                  id="password"
-                  name="password"
-                  placeholder="Enter Your Password"
-                  className="font-roboto"
-                  required
-                />
-              </div>
-              {/* End password field */}
-            </div>
-          </form>
+              <Button
+                type="submit"
+                className="w-full font-roboto bg-[#EF6291] hover:bg-[#EF6291] hover:text-[#1A1A1A]"
+              >
+                Sign Up
+              </Button>
+            </form>
+          </Form>
         </CardContent>
-        <CardFooter className="flex justify-center">
-          <Button className="w-full font-roboto bg-[#EF6291] hover:bg-[#EF6291] hover:text-[#1A1A1A]">
-            Sign In
-          </Button>
-        </CardFooter>
         <CardContent>
           <div className="flex flex-col space-y-1.5">
             <Divider />
