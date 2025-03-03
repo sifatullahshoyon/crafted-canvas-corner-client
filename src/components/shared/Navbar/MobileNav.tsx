@@ -3,7 +3,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import NavCart from "./NavCart";
 import logo from "../../../assets/images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -32,7 +32,7 @@ const MobileNav = () => {
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="left" className="p-4 bg-gray-700">
+      <SheetContent side="left" className="p-4 bg-gray-600">
         {/* logo */}
         <div className="my-6">
           <Link to="/">
@@ -43,17 +43,18 @@ const MobileNav = () => {
         {/* navItems */}
         <div className="flex flex-col items-start my-6">
           {navItems.map((item, index) => (
-            <Button
-              key={index}
-              variant="link"
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              <div className="text-white font-roboto">{item.element}</div>
-            </Button>
+            <div key={index}>
+              <NavLink
+                to={item.path}
+                onClick={() => {
+                  setOpen(false);
+                }}
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                <p className="py-2">{item.element}</p>
+              </NavLink>
+            </div>
           ))}
-
           <div
             onClick={() => {
               setOpen(false);

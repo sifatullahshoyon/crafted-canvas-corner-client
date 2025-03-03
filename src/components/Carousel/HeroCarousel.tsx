@@ -26,19 +26,19 @@ const HeroCarousel = () => {
       className="mySwiper"
     >
       <SwiperSlide>
-        <div>
+        <>
           <img src={banner1} alt="banner img" />
-        </div>
+        </>
       </SwiperSlide>
       <SwiperSlide>
-        <div>
+        <>
           <img src={banner2} alt="banner img" />
-        </div>
+        </>
       </SwiperSlide>
       <SwiperSlide>
-        <div>
+        <>
           <img src={banner3} alt="banner img" />
-        </div>
+        </>
       </SwiperSlide>
     </Swiper>
   );

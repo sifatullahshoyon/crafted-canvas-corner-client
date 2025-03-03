@@ -4,7 +4,7 @@ import NavCart from "./NavCart";
 
 const NavItem = () => {
   return (
-    <div className="md:flex  justify-between items-center w-full hidden ">
+    <div className="md:flex  justify-between items-center w-full hidden">
       {/* logo */}
       <Link to="/">
         <img src={logo} alt="logo" width="360" />

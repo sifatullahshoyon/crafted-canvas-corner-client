@@ -6,7 +6,7 @@ import YouTube from "../shared/icon/Youtube";
 
 const Topbar = () => {
   return (
-    <div className="bg-[#1A1A1A] p-2">
+    <div className="bg-[#1A1A1A] p-2 ">
       <Container>
         <div className="flex justify-between items-center">
           {/* info */}

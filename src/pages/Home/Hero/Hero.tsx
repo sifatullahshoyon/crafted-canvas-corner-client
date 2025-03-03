@@ -2,9 +2,9 @@ import HeroCarousel from "@/components/Carousel/HeroCarousel";
 
 const Hero = () => {
   return (
-    <header>
+    <div className="mt-[200px] md:mt-24 mx-auto">
       <HeroCarousel />
-    </header>
+    </div>
   );
 };
 
