@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 
 const NavCart = () => {
   return (
-    <div className="flex justify-between items-center gap-4">
+    <div className="md:flex justify-between items-center gap-4 space-y-6 md:space-y-0">
       {/* Search bar */}
       <div className="flex items-center gap-2 relative">
         {/* search icon */}

@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import NavItem from "./Navitem";
+import NavCart from "./NavCart";
+import logo from "../../../assets/images/logo.png";
+import { Link } from "react-router-dom";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       {/* This button will trigger open the mobile sheet menu */}
+
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="md:hidden">
           <svg
@@ -29,9 +32,17 @@ const MobileNav = () => {
         </Button>
       </SheetTrigger>
 
-      <SheetContent side="left">
-        <div className="flex flex-col items-start ">
-          {/* {navItems.map((item, index) => (
+      <SheetContent side="left" className="p-4 bg-gray-700">
+        {/* logo */}
+        <div className="my-6">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+        </div>
+        <hr />
+        {/* navItems */}
+        <div className="flex flex-col items-start my-6">
+          {navItems.map((item, index) => (
             <Button
               key={index}
               variant="link"
@@ -39,21 +50,20 @@ const MobileNav = () => {
                 setOpen(false);
               }}
             >
-              <div className="text-red-500">logo</div>
-              <div>{item.element}</div>
-
-              <div>
-                <p>search</p>
-              </div>
+              <div className="text-white font-roboto">{item.element}</div>
             </Button>
-          ))} */}
+          ))}
+
           <div
             onClick={() => {
               setOpen(false);
             }}
-          >
-            <NavItem></NavItem>
-          </div>
+          ></div>
+        </div>
+        <hr />
+        {/* search functionality */}
+        <div className="my-6">
+          <NavCart />
         </div>
       </SheetContent>
     </Sheet>
@@ -61,3 +71,18 @@ const MobileNav = () => {
 };
 
 export default MobileNav;
+
+const navItems = [
+  {
+    path: "/",
+    element: "Home",
+  },
+  {
+    path: "/all-products",
+    element: "All Product",
+  },
+  {
+    path: "/dashboard",
+    element: "Dashboard",
+  },
+];
