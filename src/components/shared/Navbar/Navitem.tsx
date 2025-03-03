@@ -42,7 +42,7 @@ const navItems = [
     element: "All Product",
   },
   {
-    path: "/about-us",
-    element: "About US",
+    path: "/dashboard",
+    element: "Dashboard",
   },
 ];

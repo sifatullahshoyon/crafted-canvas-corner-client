@@ -29,7 +29,7 @@ const UserInfoDropdown = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    toast.success("Login Successfully.");
+    toast.success("Logout Successfully.");
   };
   return (
     <DropdownMenu>
@@ -84,7 +84,7 @@ const UserInfoDropdown = () => {
             >
               <LogOut className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white" />
               <span className="group-hover:bg-[#EF6291] group-hover:text-[#1A1A1A] text-white">
-                Log out
+                Sign Out
               </span>
             </DropdownMenuItem>
           )}

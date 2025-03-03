@@ -1,5 +1,7 @@
 import ErrorElement from "@/components/ErrorElement";
+import DashboardLayout from "@/layouts/DashboardLayout";
 import MainLayout from "@/layouts/MainLayout";
+import AccountDetails from "@/pages/Dashboard/User/AccountDetails/AccountDetails";
 import About from "@/pages/Home/About/About";
 import Home from "@/pages/Home/Home/Home";
 import Login from "@/pages/Home/Login/Login";
@@ -33,6 +35,23 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <Registration />,
       },
+    ],
+  },
+  // dashboard
+  {
+    path: "/dashboard",
+    element: (
+      <DashboardLayout>
+        <div className="border h-screen">
+          <p className="w-full">Home</p>
+          <p className="w-full">Home</p>
+          <p className="w-full">Home</p>
+          <AccountDetails />
+        </div>
+      </DashboardLayout>
+    ),
+    children: [
+      // admin routes
     ],
   },
 ]);
