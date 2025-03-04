@@ -1,15 +1,20 @@
 import AppSidebar from "@/components/Dashboard/AppSidebar";
+import HelmetAsync from "@/components/shared/HelmetAsync";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main className="w-full">
-        <SidebarTrigger />
-        {children}
-      </main>
-    </SidebarProvider>
+    <>
+      <HelmetAsync title="Dashboard"></HelmetAsync>
+      {/* End Page Title */}
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="w-full">
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
+    </>
   );
 };
 

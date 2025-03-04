@@ -12,6 +12,7 @@ import {
 import { ShoppingCart } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
+import HelmetAsync from "@/components/shared/HelmetAsync";
 
 const products = [
   {
@@ -44,6 +45,8 @@ const Product = () => {
   );
   return (
     <>
+      <HelmetAsync title="Product"></HelmetAsync>
+      {/* End Page Title */}
       <SectionCover pageName="All Product" />
       <Container>
         <div>
