@@ -1,5 +1,4 @@
-// import Blogs from "../Blog/Blogs";
-
+import Blogs from "../Blog/Blogs";
 import Brand from "../Brand/Brand";
 import FeaturedProducts from "../FeaturedProducts/FeaturedProducts";
 import Hero from "../Hero/Hero";
@@ -13,7 +12,7 @@ const Home = () => {
       <WelcomeToStore />
       <FeaturedProducts />
       <Testimonial />
-      {/* <Blogs /> */}
+      <Blogs />
       <Brand />
     </>
   );
