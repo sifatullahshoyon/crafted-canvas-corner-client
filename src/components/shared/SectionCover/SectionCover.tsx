@@ -1,7 +1,7 @@
 import Container from "../Container";
 import NavigationBreadCrumb from "../NavigationBreadCrumb/NavigationBreadCrumb";
 
-const SectionCover = ({ pageName }: { pageName: "string" }) => {
+const SectionCover = ({ pageName }: { pageName: string }) => {
   return (
     <div className="section-cover-img">
       <Container>

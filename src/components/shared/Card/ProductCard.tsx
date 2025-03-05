@@ -1,9 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart, Eye, List } from "lucide-react";
+import { Heart, Eye, ShoppingCart } from "lucide-react";
 import RatingStart from "../Rating/RatingStart";
 import { Button } from "@/components/ui/button";
+import { TProducts } from "@/pages/Home/FeaturedProducts/FeaturedProducts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product }: { product: TProducts }) => {
   const { name, price, image } = product;
 
   return (
@@ -22,15 +29,54 @@ const ProductCard = ({ product }) => {
             className="absolute top-1/2 left-1/2 flex gap-2 -translate-x-1/2 -translate-y-1/2 opacity-0 
             group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-in-out"
           >
-            <button className="bg-[#EF6291] p-2 text-white rounded-md">
-              <Heart size={20} />
-            </button>
-            <button className="bg-[#EF6291] p-2 text-white rounded-md">
-              <Eye size={20} />
-            </button>
-            <button className="bg-[#EF6291] p-2 text-white rounded-md">
-              <List size={20} />
-            </button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="default"
+                    className="bg-transparent group-hover:bg-[#EF6291] font-bold p-2 text-white rounded-md"
+                  >
+                    <Heart size={20} />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-roboto">Add to wish List</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            {/* wish list Btn End */}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="default"
+                    className="bg-transparent group-hover:bg-[#EF6291] p-2  font-bold text-white rounded-md"
+                  >
+                    <Eye size={20} />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-roboto">Click to view Read More</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            {/* Click More Btn End */}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="default"
+                    className="bg-transparent group-hover:bg-[#EF6291] p-2 text-white font-bold rounded-md"
+                  >
+                    <ShoppingCart size={20} />
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="font-roboto">Add to Shopping Cart</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            {/* Click More Btn End */}
           </div>
         </div>
 

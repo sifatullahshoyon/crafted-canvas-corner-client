@@ -18,16 +18,14 @@ const WelcomeToStore = () => {
               Welcome To Store.
             </h1>
             <p className="font-roboto text-sm text-[#888888] tracking-wide leading-[26px] mb-[70px]">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting.
+              Discover a wide range of high-quality products at unbeatable
+              prices. Whether you're looking for the latest trends, everyday
+              essentials, or exclusive deals, we have something for everyone.
+              Shop with confidence and enjoy a seamless shopping experience!
             </p>
             <Button
               variant="destructive"
-              className="bg-[#EF6291] text-white font-medium font-roboto tracking-wide hover:bg-[#EF6291] px-6 text-base"
+              className="bg-[#EF6291] text-white font-medium font-roboto tracking-wide hover:bg-[#D84C7D] px-6 text-base"
             >
               Read More
             </Button>

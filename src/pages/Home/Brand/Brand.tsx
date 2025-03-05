@@ -10,7 +10,7 @@ import brandImg7 from "../../../assets/images/brand/logo7.jpg";
 
 const Brand = () => {
   return (
-    <div className="mt-24">
+    <div className="my-24">
       <Container>
         <>
           <h1 className="font-roboto font-bold text-[#1A1A1A] text-[40px] tracking-[.2px] leading-[30px] pb-6 ">
