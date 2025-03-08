@@ -1,9 +1,9 @@
-import ProductCard from "@/components/shared/Card/ProductCard";
+import FeatureProductCard from "@/components/shared/Card/FeatureProductCard";
 import Container from "@/components/shared/Container";
 import { Button } from "@/components/ui/button";
 import { products } from "@/utils/data/productData";
 import { Link } from "react-router-dom";
-export type TProducts = {
+export type TFeatureProducts = {
   id: number;
   name: string;
   price: number;
@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
           <hr className="w-24 h-[3px] bg-[#EF6291]" />
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 my-6">
             {products?.slice(0, 8).map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <FeatureProductCard key={product.id} product={product} />
             ))}
           </div>
           <div className="text-center">
