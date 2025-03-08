@@ -13,13 +13,13 @@ import { IProduct } from "@/interface/ProductInterface";
 const ProductCard = ({ product }: { product: IProduct }) => {
   const { name, price, photo, category } = product;
   return (
-    <Card className="relative group max-w-[305px] border-none  p-4">
+    <Card className="relative group max-w-[350px] border-none  p-4 shadow-md">
       {/* Product Image */}
       <div className="relative w-full h-56 flex justify-center items-center bg-gray-100">
         <img
           src={photo ? photo : "not found"}
           alt={name}
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover"
         />
 
         {/* Hover Icons */}
@@ -79,29 +79,43 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       </div>
 
       {/* Product Info */}
-      <CardContent className=" mt-4">
-        <h3 className="font-roboto text-sm font-normal text-[#888888] group-hover:text-[#EF6291] tracking-wide">
-          Title: {name ? name : "not found"}
+      <CardContent className="mt-4 pl-0">
+        <h3 className="font-roboto tracking-wide">
+          <span className="text-base font-semibold text-[#1A1A1A]">
+            Title :
+          </span>{" "}
+          {name ? name : "not found"}
         </h3>
-        <p className="text-lg font-bold text-[#1A1A1A] font-roboto my-2">
-          Price: ${price ? price : "not found"}
+        <p className="font-roboto my-2">
+          <span className="text-base font-semibold text-[#1A1A1A]">
+            Price :
+          </span>{" "}
+          ${price ? price : "00.0"}
         </p>
-        <p className="text-lg font-bold text-[#1A1A1A] font-roboto my-2">
-          Category :{category ? category : "not found"}
+        <p className="font-roboto my-2">
+          <span className="text-base font-semibold text-[#1A1A1A]">
+            Category :
+          </span>{" "}
+          {category ? category : "not found"}
         </p>
-        <RatingStart />
+        <p className=" flex justify-start items-center">
+          <span className="text-base font-semibold text-[#1A1A1A]">
+            Rating :
+          </span>{" "}
+          <RatingStart />
+        </p>
         <div className="flex justify-between items-center gap-6 absolute bottom-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
+          <Button
+            className="bg-[#EF6291] hover:bg-[#D84C7D] text-white  rounded-md mt-3  flex gap-2  opacity-0 
+            group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-in-out font-roboto"
+          >
+            More Details
+          </Button>
           <Button
             className="bg-[#1A1A1A] hover:bg-[#1A1A1A] text-white  rounded-md mt-3  flex gap-2 opacity-0 
             group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-in-out font-roboto"
           >
             Add To Cart
-          </Button>
-          <Button
-            className="bg-[#1A1] hover:bg-[#1A1A1A] text-white  rounded-md mt-3  flex gap-2  opacity-0 
-            group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-in-out font-roboto"
-          >
-            More Detaiels
           </Button>
         </div>
       </CardContent>
