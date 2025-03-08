@@ -21,7 +21,7 @@ import {
 import { FieldValues, useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import LoginCheckbox from "@/components/checkbox/LoginCheckbox";
+import LoginCheckbox from "@/components/Checkbox/LoginCheckbox";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/auth/authSlice";
