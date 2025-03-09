@@ -1,13 +1,16 @@
 import ErrorElement from "@/components/ErrorElement";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import MainLayout from "@/layouts/MainLayout";
-import AccountDetails from "@/pages/Dashboard/User/AccountDetails/AccountDetails";
+import ManageOrders from "@/pages/Dashboard/Admin/ManageOrders/ManageOrders";
+import ManageProducts from "@/pages/Dashboard/Admin/ManageProducts/ManageProducts";
+import ManageUsers from "@/pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import About from "@/pages/Home/About/About";
 import Home from "@/pages/Home/Home/Home";
 import Login from "@/pages/Home/Login/Login";
 import Product from "@/pages/Home/Product/Product";
 import Registration from "@/pages/Home/Registration/Registration";
 import { createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,17 +44,20 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-      <DashboardLayout>
-        <div className="border h-screen">
-          <p className="w-full">Home</p>
-          <p className="w-full">Home</p>
-          <p className="w-full">Home</p>
-          <AccountDetails />
-        </div>
-      </DashboardLayout>
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
     ),
+    errorElement: <ErrorElement />,
     children: [
-      // admin routes
+      /// admin route
+      { path: "/dashboard/manage-orders", element: <ManageOrders /> },
+      { path: "/dashboard/manage-products", element: <ManageProducts /> },
+      { path: "/dashboard/manage-users", element: <ManageUsers /> },
+      /// user route
+      { path: "/dashboard/manage-orders", element: <ManageOrders /> },
+      { path: "/dashboard/manage-products", element: <ManageProducts /> },
+      { path: "/dashboard/manage-users", element: <ManageUsers /> },
     ],
   },
 ]);

@@ -31,18 +31,18 @@ const AppSidebarFooter = () => {
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <SidebarMenuButton className="p-6">
+              <SidebarMenuButton className="p-6 font-medium bg-gray-200 hover:bg-gray-300">
                 <User2 size={22} />{" "}
                 <div className="flex flex-col justify-center items-center mx-auto space-y-1">
                   {user ? (
-                    <p className="font-roboto">{user.name}</p>
+                    <p className="font-roboto font-medium py-1">{user.name}</p>
                   ) : (
-                    <p className="font-roboto">Username</p>
+                    <p className="font-roboto font-medium">User Name</p>
                   )}
                   {user ? (
-                    <p className="font-roboto">{user.email}</p>
+                    <p className="font-roboto font-medium">{user.email}</p>
                   ) : (
-                    <p className="font-roboto">Useremail</p>
+                    <p className="font-roboto font-medium">User Email</p>
                   )}
                 </div>
                 <ChevronUp className="ml-auto" />
